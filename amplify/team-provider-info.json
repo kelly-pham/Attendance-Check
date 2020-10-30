@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-attendancechecker-dev-115601-authRole",
+      "UnauthRoleArn": "arn:aws:iam::385555342719:role/amplify-attendancechecker-dev-115601-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::385555342719:role/amplify-attendancechecker-dev-115601-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-attendancechecker-dev-115601-deployment",
+      "UnauthRoleName": "amplify-attendancechecker-dev-115601-unauthRole",
+      "StackName": "amplify-attendancechecker-dev-115601",
+      "StackId": "arn:aws:cloudformation:us-east-1:385555342719:stack/amplify-attendancechecker-dev-115601/8fc0c0b0-1ae1-11eb-a593-0abd460f6797",
+      "AmplifyAppId": "d2uj4q7xipklb9"
+    },
+    "categories": {
+      "auth": {
+        "attendancechecker01016a3c": {}
+      }
+    }
+  }
+}
