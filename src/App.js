@@ -1,16 +1,15 @@
 import React , {useState, useEffect} from "react";
 import './App.css';
 import Amplify from 'aws-amplify';
-import {configureAmplify} from './service';
 import {AmplifySignOut, withAuthenticator} from "@aws-amplify/ui-react";
 import config from "./aws-exports";
-import AddIcon from "@material-ui/icons/AddAPhoto"
-import { Icon, IconButton, InputAdornment, TextField } from "@material-ui/core";
-import PublishIcon from '@material-ui/icons/Publish';
-
 import Storage from "@aws-amplify/storage";
+import AddButton from "@material-ui/icons/AddAPhoto";
+import Button from "@material-ui/core/Button";
+import { IconButton } from "@material-ui/core";
 
 Amplify.configure(config);
+
 
 class App extends React.Component {
  state = {
@@ -18,6 +17,7 @@ class App extends React.Component {
    imageFile:"",
    response:""
  };
+
  uploadImage = () => {
   Storage.put(`userimages/${this.upload.files[0].name}`,
               this.upload.files[0],
@@ -32,6 +32,7 @@ class App extends React.Component {
 };
 
   render(){
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -49,20 +50,25 @@ class App extends React.Component {
             })
           }
         />
-         <input value={this.state.imageName} placeholder="Select file" />
-         <button
+         <input value={this.state.imageName} placeholder="Filename" />
+         <IconButton>
+         <AddButton
           onClick={e => {
             this.upload.value = null;
             this.upload.click();
           }}
           loading={this.state.uploading}
-        >
-          Browse
-        </button>
-          <IconButton>
-            <PublishIcon label = "Upload file" onClick = {this.uploadImage}/>
-          </IconButton>
-          {!!this.state.response && <div>{this.state.response}</div>}
+        />
+         </IconButton>
+         
+      
+      
+        <Button variant = "contained" color="default"  onClick = {this.uploadImage}>
+          Upload
+        </Button>
+          <div>
+            <p>{this.state.response}</p>
+          </div>
         </header>
       </div>
     )
