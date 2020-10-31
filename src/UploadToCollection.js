@@ -22,7 +22,7 @@ class UploadToCollection extends React.Component {
   
     uploadImage = () => {
       Storage.put(
-        `${this.upload.files[0].name}`,
+        `userimages/${this.upload.files[0].name}`,
         this.upload.files[0],
         { contentType: this.upload.files[0].type }
       )
