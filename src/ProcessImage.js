@@ -39,7 +39,6 @@ AWS.config.update(AWS_Config);
 }
 
 export default function ProcessImage() {
-    //AnonLog();
   console.log("Did called");
   let control = document.getElementById("fileToUpload");
   let file = control.files[0];
@@ -82,19 +81,4 @@ export default function ProcessImage() {
   reader.readAsDataURL(file);
 }
 
-// //Provides anonymous log on to AWS services
-// function AnonLog() {
-//   // Configure the credentials provider to use your identity pool
-//   AWS_SDK_LOAD_CONFIG=1;
-//   AWS.config.region = "us-east-1"; // Region
-//   AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-//     IdentityPoolId: "us-east-1:c747123e-aa75-43eb-81e5-10e2db013e4e",
-//   });
-//   // Make the call to obtain credentials
-//   AWS.config.credentials.get(function () {
-//     // Credentials will be available when this function is called.
-//     var accessKeyId = "AKIAVTRHDUV7WQTSG4WW";
-//     var secretAccessKey ="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";
-//     // var sessionToken = AWS.config.credentials.sessionToken;
-//   });
-// }
+
