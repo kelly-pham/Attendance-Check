@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import UploadToCollection from "./UploadToCollection";
+import FaceComparison from "./FaceComparison";
 import Home from "./Home";
 import config from "./aws-exports";
 import { MenuItem, MenuList } from "@material-ui/core";
@@ -54,6 +55,11 @@ const onMouseOut = () => {
                 Upload Image to Collection <i className="fas fa-caret-down"></i>
               </Link>         
             </li>
+            <li>
+              <Link to="/face_comparison" className="nav-items">
+                Face Comparison
+              </Link>
+            </li>
           </ul>
         <hr />
         <div className="App">
@@ -71,6 +77,11 @@ const onMouseOut = () => {
             </div>
           </Route>
 
+          <Route exact path="/face_comparison">
+            <div className = "App-header">
+            <FaceComparison />
+            </div>
+            </Route>
         </Switch>
         </div>
         
