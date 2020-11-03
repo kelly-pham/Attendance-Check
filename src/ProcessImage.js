@@ -1,5 +1,10 @@
+import { ProcessCredentials } from 'aws-sdk';
+import awsmobile from "./aws-exports";
+
+require('dotenv');
 
 let AWS = require('aws-sdk');
+
 export default function ProcessImage() {
     AnonLog();
     var control = document.getElementById("fileToUpload");
@@ -13,17 +18,17 @@ export default function ProcessImage() {
           console.log(e.target.result);
         //Call Rekognition  
         AWS.region = "us-east-1";  
-        let rekognition = new AWS.Rekognition();
-        let binary = '';
-        let byte = new Uint8Array(e.target.result);
-        let len = byte.byteLength;
-        for (var i = 0; i<len;i++){
-            binary += String.fromCharCode(byte[i]);
-        }
-        console.log(binary);
+        let rekognition = new AWS.Rekognition({
+          region:'us-east-1',
+          credentials:{
+            accessKeyId: process.env.AWS_AccessKey,
+            secretAccessKey: process.env.AWS_SecretAccessKey
+          }
+        });
+        
         let params = {
           Image: {
-          Bytes: new Bytes(e.target.result)
+          Bytes: e.target.result
         },
         Attributes: [
         'ALL',
@@ -31,7 +36,7 @@ export default function ProcessImage() {
     };
     rekognition.detectFaces(params, function (err, data) {
         console.log(params);
-        console.log(data.FaceDetails);
+        console.log(JSON.stringify(data, null, '\t'));
       //if (err) console.log(err, err.stack); // an error occurred
       //else {
     //    var table = "<table><tr><th>Low</th><th>High</th></tr>";
@@ -50,13 +55,19 @@ export default function ProcessImage() {
     reader.readAsArrayBuffer(file);
   }
 function AnonLog() {
-    
+  
+  // AWS.config = new AWS.Config();
+  //   AWS.config.update({
+  //     accessKeyId: process.env.AWS_AccessKey,
+  //     secretAccessKey: process.env.AWS_SecretAccessKey,
+
+  //   });
     // Configure the credentials provider to use your identity pool
     AWS.config.region = 'us-east-1'; // Region
-    AWS.config.credentials = new AWS.Credentials({
-      IdentityPoolId: 'us-east-1:c747123e-aa75-43eb-81e5-10e2db013e4e',
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: 'us-east-1:141dc64c-f266-4a4a-b225-2d6553497854'
     });
-    // Make the call to obtain credentials
+    //Make the call to obtain credentials
     AWS.config.credentials.get(function () {
       // Credentials will be available when this function is called.
       var accessKeyId = AWS.config.credentials.accessKeyId;
