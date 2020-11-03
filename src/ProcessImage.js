@@ -14,9 +14,16 @@ export default function ProcessImage() {
         //Call Rekognition  
         AWS.region = "us-east-1";  
         let rekognition = new AWS.Rekognition();
+        let binary = '';
+        let byte = new Uint8Array(e.target.result);
+        let len = byte.byteLength;
+        for (var i = 0; i<len;i++){
+            binary += String.fromCharCode(byte[i]);
+        }
+        console.log(binary);
         let params = {
           Image: {
-          Bytes: e.target.result
+          Bytes: new Bytes(e.target.result)
         },
         Attributes: [
         'ALL',
@@ -24,7 +31,7 @@ export default function ProcessImage() {
     };
     rekognition.detectFaces(params, function (err, data) {
         console.log(params);
-        console.log(data);
+        console.log(data.FaceDetails);
       //if (err) console.log(err, err.stack); // an error occurred
       //else {
     //    var table = "<table><tr><th>Low</th><th>High</th></tr>";
@@ -45,9 +52,9 @@ export default function ProcessImage() {
 function AnonLog() {
     
     // Configure the credentials provider to use your identity pool
-    AWS.config.region = 'RegionToUse'; // Region
+    AWS.config.region = 'us-east-1'; // Region
     AWS.config.credentials = new AWS.Credentials({
-      IdentityPoolId: 'IdentityPoolIdToUse',
+      IdentityPoolId: 'us-east-1:c747123e-aa75-43eb-81e5-10e2db013e4e',
     });
     // Make the call to obtain credentials
     AWS.config.credentials.get(function () {
