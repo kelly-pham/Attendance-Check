@@ -1,14 +1,15 @@
 import AWS from "aws-sdk";
 require('dotenv').config();
+const AWS_Config = {
+    accessKeyId: process.env.AWS_AccessKey,
+    accessSecretKey: process.env.AWS_AWS_SecretAccessKey,
+    region: "us-east-1"
+}
+
+AWS.config.update(AWS_Config);
 function DetectFaces(imageData) {
-    const AWS_Config = {
-        accessKeyId: process.env.AWS_AccessKey,
-        accessSecretKey: process.env.AWS_AWS_SecretAccessKey,
-        region: "us-east-1"
-    }
 
   // Create AWS Rekognition isntance
-AWS.config.update(AWS_Config);
   let rekognition = new AWS.Rekognition();
   let params = {
     Image: {
