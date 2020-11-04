@@ -60,6 +60,7 @@ class UploadToCollection extends React.Component {
         <div className="App">
           <header className="App-header">
             <h1 style={{ color: "#152238" }}>Upload Image to Collection</h1>
+            
             <input
               type="file"
               accept="image/png, image/jpeg"
@@ -79,7 +80,10 @@ class UploadToCollection extends React.Component {
           type="text"
           onChange={(e) => this.setState({collectionId:e.target.value})}
         />
-              <input value={this.state.imageName} placeholder="Filename" />
+              
+            </div>
+            <div>
+            <input value={this.state.imageName} placeholder="Filename" />
               <IconButton>
                 <AddButton
                   onClick={(e) => {
