@@ -28,10 +28,6 @@ class UploadToCollection extends React.Component {
       response: "",
       collectionId:""
     };
-
-    componentDidMount(){
-      
-    }
   
     uploadImage = () => {
       Storage.put(
@@ -42,20 +38,20 @@ class UploadToCollection extends React.Component {
         .then((result) => {
           this.upload = null;
           this.setState({ response: "Success uploading file!" });
-          const api = 'https://8lsesqd2s7.execute-api.us-east-1.amazonaws.com/test_env';
-      const data = {"collectionId": this.state.collectionId};
+      //     const api = 'https://8lsesqd2s7.execute-api.us-east-1.amazonaws.com/test_env/addfaces';
+      // const data = {collectionId: this.state.collectionId};
 
-      axios
-      .post(api,data).then((response) => {
-        console.log(response);
-      }).catch((err) => console.log(err))
-          console.log(result);
-          console.log(this.state.response);
+      // axios
+      // .post(api,data).then((response) => {
+      //   console.log(response);
+      // }).catch((err) => console.log(err))
+      //     console.log(result);
+      //     console.log(this.state.response);
         })
         .catch((err) => {
           this.setState({ response: `Cannot uploading file: ${err}` });
         });
-    };
+        }
   
     render() {
       let upload = <p>{this.state.response}</p>;

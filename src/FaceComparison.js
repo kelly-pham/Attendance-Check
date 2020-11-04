@@ -5,7 +5,7 @@ import { IconButton } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import Amplify, { API } from "aws-amplify";
 import awsmobile from "./aws-exports";
-import AWS from "aws-sdk";
+import AWS, { ProcessCredentials } from "aws-sdk";
 import ProcessImage from "./ProcessImage";
 
 
@@ -19,37 +19,47 @@ export default function FaceComparison() {
     console.log(value);
     console.log(collectionId);
     setCollectionId(collectionId);
+    
+    
+    // document.getElementById("collection-id").value = "";
 
-    document.getElementById("fileToUpload").addEventListener(
+  };
+
+  const imageHandler = () =>{
+        document.getElementById("fileToUpload").addEventListener(
       "change",
       function (event) {
-        ProcessImage();
+        ProcessImage(collectionId);
       },
       false
     );
-
-    document.getElementById("collection-id").value = "";
-  };
+  }
 
   return (
     <div className="App">
       <div className="App-header">
+        <p>Please type in class ID:</p>
+        <form>
         <TextField
           id="collection-id"
           placeholder="Enter Class ID"
           type="text"
           onChange={(e) => setCollectionId(e.target.value)}
         />
-        <input
+        <Button onClick={submitHandler}>Submit</Button>
+        <div><input
           type="file"
           name="fileToUpload"
           id="fileToUpload"
           accept="image/*"
-          
-        />
+          onClick={imageHandler}
+        /></div>
+        
         
         <p id="faceResult"></p>
-        <Button onClick={submitHandler}>Submit</Button>
+        
+        </form>
+        
       </div>
     </div>
   );

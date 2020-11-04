@@ -16,6 +16,7 @@ import config from "./aws-exports";
 import { MenuItem, MenuList } from "@material-ui/core";
 import { Router, Switch, Route, Link } from "react-router-dom";
 import history from "./history";
+
 Amplify.configure(config);
 
 function App() {
@@ -80,6 +81,7 @@ const onMouseOut = () => {
           <Route exact path="/face_comparison">
             <div className = "App-header">
             <FaceComparison />
+            {/* <FaceVerification_test /> */}
             </div>
             </Route>
         </Switch>
