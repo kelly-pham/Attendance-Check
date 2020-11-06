@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
-import Amplify from "aws-amplify";
+import Amplify,{Auth} from "aws-amplify";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import UploadToCollection from "./components/UploadToCollection";
 import FaceComparison from "./components/FaceComparison";
@@ -9,17 +9,20 @@ import { Router, Switch, Route, Link } from "react-router-dom";
 import history from "./history";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
 
 Amplify.configure(config);
 
 function App() {
+  console.log(Auth.user.username);
   return (
     <div>
       <Router history={history}>
       <Navbar />
       <Switch>
+          <Route exact path="/" component={Home}>
 
-          <Route exact path="/" component={Home}></Route>
+          </Route>
           <Route path="/add">
             <div className="add">
               <UploadToCollection />
@@ -32,9 +35,8 @@ function App() {
             </div>
             </Route>
         </Switch>
-      <div className = "App-header">
-      </div>
     </Router>
+    
     </div>
     
  

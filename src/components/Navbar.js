@@ -5,7 +5,7 @@ import * as AIIcons from "react-icons/ai";
 import {SidebarData} from "./SidebarData";
 import "./Navbar.css";
 import {AmplifySignOut} from "@aws-amplify/ui-react";
-
+import Footer from "./Footer";
 export default function Navbar(){
     const [sidebar, setSidebar] = useState(false);
     
@@ -34,7 +34,9 @@ export default function Navbar(){
                         )
                     })}
                     <AmplifySignOut />
+                    
                 </ul>
+                
             </nav>
             
         </div>

@@ -1,28 +1,31 @@
 import React from "react";
 import "../App.css";
-import Amplify from "aws-amplify";
+import Amplify, { Auth } from "aws-amplify";
 import Storage from "@aws-amplify/storage";
 import AddButton from "@material-ui/icons/AddAPhoto";
 import Button from "@material-ui/core/Button";
 import { IconButton, TextField } from "@material-ui/core";
+import "../App.css";
 
-Amplify.configure({
-  API: {
-    endpoints: [
-      {
-        name: "face-detection",
-        endpoint:
-          "https://8lsesqd2s7.execute-api.us-east-1.amazonaws.com/test_env",
-      },
-    ],
-  },
-});
+// Amplify.configure({
+//   API: {
+//     endpoints: [
+//       {
+//         name: "face-detection",
+//         endpoint:
+//           "https://8lsesqd2s7.execute-api.us-east-1.amazonaws.com/test_env",
+//       },
+//     ],
+//   },
+// });
+
+
 class UploadToCollection extends React.Component {
   state = {
     imageName: "",
     imageFile: "",
     response: "",
-    collectionId: "",
+    collectionId: ""
   };
 
   uploadImage = () => {
@@ -34,23 +37,18 @@ class UploadToCollection extends React.Component {
       .then((result) => {
         this.upload = null;
         this.setState({ response: "Success uploading file!" });
-        //     const api = 'https://8lsesqd2s7.execute-api.us-east-1.amazonaws.com/test_env/addfaces';
-        // const data = {collectionId: this.state.collectionId};
-
-        // axios
-        // .post(api,data).then((response) => {
-        //   console.log(response);
-        // }).catch((err) => console.log(err))
-        //     console.log(result);
-        //     console.log(this.state.response);
       })
       .catch((err) => {
         this.setState({ response: `Cannot uploading file: ${err}` });
       });
   };
+  
+
 
   render() {
     let upload = <p>{this.state.response}</p>;
+    console.log(Auth.user.username);
+    
     return (
       <div className="add">
         <header className="App-header">
@@ -74,6 +72,9 @@ class UploadToCollection extends React.Component {
               placeholder="Enter Class ID"
               type="text"
               onChange={(e) => this.setState({ collectionId: e.target.value })}
+              style = {{
+                paddingBottom:10
+              }}
             />
           </div>
           <div>
@@ -91,13 +92,15 @@ class UploadToCollection extends React.Component {
 
           <Button
             variant="contained"
-            color="default"
+            color="primary"
             onClick={this.uploadImage}
+            
           >
             Upload
           </Button>
           {upload}
         </header>
+ 
       </div>
     );
   }

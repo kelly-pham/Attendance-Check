@@ -30,18 +30,28 @@ export default function FaceComparison() {
 
   return (
     <div className="check">
-      <div className="App-header">
-        <h1>Please type in class ID:</h1>
-      </div>
-      <div>
-        <form>
+      <header className="App-header">
+      <h1>Please type in class ID:</h1>
           <TextField
             id="collection-id"
             placeholder="Enter Class ID"
             type="text"
             onChange={(e) => setCollectionId(e.target.value)}
+            style = {{
+              paddingBottom:10
+            }}
           />
-          <Button onClick={submitHandler}>Submit</Button>
+       
+           <Button
+            variant="contained"
+            color="primary"
+            onClick={submitHandler}
+          >
+            Enter
+          </Button>
+       
+       
+         <br></br>
           <div>
             <input
               type="file"
@@ -49,12 +59,15 @@ export default function FaceComparison() {
               id="fileToUpload"
               accept="image/*"
               onClick={imageHandler}
+              style = {{
+                marginBottom:10
+              }}
             />
           </div>
 
           <p id="faceResult"></p>
-        </form>
+        </header>
       </div>
-    </div>
+    
   );
 }
