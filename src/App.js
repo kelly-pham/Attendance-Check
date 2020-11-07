@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Amplify,{Auth} from "aws-amplify";
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import Amplify, { Auth } from "aws-amplify";
+import { withAuthenticator, AmplifySignIn, AmplifySignOut } from "@aws-amplify/ui-react";
 import UploadToCollection from "./components/UploadToCollection";
 import FaceComparison from "./components/FaceComparison";
 import config from "./aws-exports";
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
 import history from "./history";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -17,11 +17,13 @@ function App() {
   console.log(Auth.user.username);
   return (
     <div>
+      <AmplifySignOut />
       <Router history={history}>
-      <Navbar />
-      <Switch>
+        <Navbar />
+        <Switch>
+         
           <Route exact path="/" component={Home}>
-
+            <Home />
           </Route>
           <Route path="/add">
             <div className="add">
@@ -30,16 +32,19 @@ function App() {
           </Route>
 
           <Route exact path="/check">
-            <div className = "check">
-            <FaceComparison />
+            <div className="check">
+              <FaceComparison />
             </div>
-            </Route>
+          </Route>
+
+          <Route exact path="/signin">
+            <div className="App">
+              <AmplifySignIn />
+            </div>
+          </Route>
         </Switch>
-    </Router>
-    
+      </Router>
     </div>
-    
- 
   );
 }
 

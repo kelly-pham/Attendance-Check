@@ -33,7 +33,7 @@ export default function Navbar(){
                             </li>
                         )
                     })}
-                    <AmplifySignOut />
+                  
                     
                 </ul>
                 

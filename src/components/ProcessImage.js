@@ -73,7 +73,7 @@ export default function ProcessImage(collectionId) {
                 let externalImageID =data.FaceMatches[i]["Face"]["ExternalImageId"];
                 let name = externalImageID.split("-")[2];
                 console.log(name);
-                var imageLink = `<a href = ${JSON.stringify(result)}>View Face</a>`;
+                var imageLink = `<a href = ${JSON.stringify(result)} target='_blank'>View Face</a>`;
                 console.log(imageLink);
                 table += "<tr><td>" + id + "</td><td>" + name.split(".")[0] + "</td><td>" + imageLink + "</td></tr>";
                 
