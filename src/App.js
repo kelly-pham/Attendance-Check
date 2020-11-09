@@ -9,6 +9,7 @@ import { Router, Switch, Route, Redirect } from "react-router-dom";
 import history from "./history";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import ListFile from "./components/ListFile";
 import Footer from "./components/Footer";
 
 Amplify.configure(config);
@@ -34,6 +35,11 @@ function App() {
           <Route exact path="/check">
             <div className="check">
               <FaceComparison />
+            </div>
+          </Route>
+          <Route exact path="/list">
+            <div className="list">
+              <ListFile />
             </div>
           </Route>
 

@@ -18,9 +18,15 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Add Collection to Class ID',
+        title: 'Add Student to Class',
         path: '/add',
         icon:  <AIIcons.AiOutlineAppstoreAdd/>,
+        cName: 'nav-text'
+    },
+    {
+        title: 'List Images in Class Collection',
+        path: '/list',
+        icon:  <AIIcons.AiOutlineOrderedList/>,
         cName: 'nav-text'
     },
     {

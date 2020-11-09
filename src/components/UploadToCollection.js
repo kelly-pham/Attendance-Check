@@ -37,10 +37,12 @@ class UploadToCollection extends React.Component {
       .then((result) => {
         this.upload = null;
         this.setState({ response: "Success uploading file!" });
+        alert(this.state.response);
       })
       .catch((err) => {
         this.setState({ response: `Cannot uploading file: ${err}` });
       });
+      
   };
   
 
@@ -56,6 +58,7 @@ class UploadToCollection extends React.Component {
 
           <input
             type="file"
+            onFocus="this.value=''"
             accept="image/png, image/jpeg"
             style={{ display: "none" }}
             ref={(ref) => (this.upload = ref)}
@@ -98,7 +101,7 @@ class UploadToCollection extends React.Component {
           >
             Upload
           </Button>
-          {upload}
+          
         </header>
  
       </div>
