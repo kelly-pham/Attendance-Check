@@ -10,10 +10,10 @@ import history from "./history";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import ListFile from "./components/ListFile";
-import Footer from "./components/Footer";
+
 
 Amplify.configure(config);
-
+Auth.configure(config);
 function App() {
   console.log(Auth.user.username);
   return (
