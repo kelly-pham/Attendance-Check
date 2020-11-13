@@ -6,6 +6,7 @@ import AddButton from "@material-ui/icons/AddAPhoto";
 import Button from "@material-ui/core/Button";
 import { IconButton, TextField } from "@material-ui/core";
 import "../App.css";
+import config from "../aws-exports";
 
 // Amplify.configure({
 //   API: {
@@ -18,7 +19,8 @@ import "../App.css";
 //     ],
 //   },
 // });
-
+Amplify.configure(config);
+Auth.configure(config);
 
 class UploadToCollection extends React.Component {
   state = {
