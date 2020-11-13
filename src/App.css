@@ -104,13 +104,20 @@ hr.solid {
 
 .list-face-collection ul{
   padding-top: 30px;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  list-style: none;
+  list-style: none; */
 }
 
 .list-face-collection li{
-  width: 200px;
-  height: 5px;
-  margin: 5px;
+  display:block;
+  float:center;
+  margin-left:500px;
+  width:300px; /* adjust */
+  height:150px; /* adjust */
+  padding: 5px; /*adjust*/
+}
+
+.list-face-collection p{
+  text-align: center;
 }
