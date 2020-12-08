@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Atendance Checker using AWS Clouds Services
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
+An attempt to solve the attendance checker through Zoom screenshot by using AWS Rekognition Face Comparison feature. 
 
-In the project directory, you can run:
+## Architecture Diagram & Components
+![](misc\cloud.png)
 
-### `npm start`
+* Front-end: React
+* Back-end: AWS [Amplify](https://aws.amazon.com/amplify/?nc=sn&loc=0) + [S3](https://aws.amazon.com/s3/) (for storing image uploaded by user) + [Cognito](https://aws.amazon.com/cognito/) (Authentication) + [Lambda](https://aws.amazon.com/lambda/) (where we add Faces to the Face Collection)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deployment
+* Local:
+```javascript
+    npm start
+```
+* Cloud: Install Amplify using CLI (more details can be found [here](https://docs.amplify.aws/cli/start/install)) 
+```javascript
+    npm install -g @aws-amplify/cli
+```
+Configure Amplify
+```javascript
+    amplify configure
+```
+A AWS Console Sign-in page will pop up. Once signed in, Amplify will ask to specify AWS region, IAM user (access key + secret key) and Cognito authentication.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To initialize Amplify
+```javascript
+    amplify init
+```
+To update Amplify
+```javascript
+    amplify push
+```
+To check what services is installed with Amplify
+```javascript
+    amplify status
+```
 
-### `npm test`
+After installing Amplify, copy all source code and update Amplify.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Works
+* Enhancing the Face Comparison feature (two approaches: one is migrating to Google Cloud Vision API and compare, or create a model that can detect and save faces constrained to Zoom screenshot)
+* Scailing up by leveraging AWS Amplify + graphQL + DynamoDB to create a user database.
+* More responsive UI.
