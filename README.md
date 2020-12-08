@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 An attempt to solve the attendance checker through Zoom screenshot by using AWS Rekognition Face Comparison feature. 
 
 ## Architecture Diagram & Components
-![](misc\cloud.png)
+<img src = "misc\cloud.png"/>
 
 * Front-end: React
 * Back-end: AWS [Amplify](https://aws.amazon.com/amplify/?nc=sn&loc=0) + [S3](https://aws.amazon.com/s3/) (for storing image uploaded by user) + [Cognito](https://aws.amazon.com/cognito/) (Authentication) + [Lambda](https://aws.amazon.com/lambda/) (where we add Faces to the Face Collection)
